@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <!-- Video elements -->
+    <video id="video1" loop crossOrigin="anonymous" webkit-playsinline playsinline style="display:none">
+      <source src="video/HCK Graduation.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+    </video>
+    <video id="video2" loop crossOrigin="anonymous" webkit-playsinline playsinline style="display:none">
+      <source src="video/Spring Carnival.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+    </video>
+    <video id="video3" loop crossOrigin="anonymous" webkit-playsinline playsinline style="display:none">
+      <source src="video/We Are Skill.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+    </video>
+    
+    <!-- A-Frame scene -->
+    <a-scene mindar-image="imageTargetSrc: data/target2.mind; uiScanning:no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights, antialias: false, logarithmicDepthBuffer: true" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      
+      <!-- First target -->
+      <a-entity id="target1" mindar-image-target="targetIndex: 0">
+        <a-video src="#video1" position="0 0 0" geometry="height: 0.7; width: 1.1"></a-video>
+      </a-entity>
+      
+      <!-- Second target -->
+      <a-entity id="target2" mindar-image-target="targetIndex: 1">
+        <a-video src="#video2" position="0 0 0" geometry="height: 0.65; width: 1"></a-video>
+      </a-entity>
+      
+      <!-- Third target -->
+      <a-entity id="target3" mindar-image-target="targetIndex: 2">
+        <a-video src="#video3" position="0 0 0" geometry="height: 0.61; width: 0.9"></a-video>
+      </a-entity>
+    </a-scene>
+   
+    <script>
+      // Target 1
+      const target1 = document.querySelector('#target1');
+      const video1 = document.getElementById('video1');
+      target1.addEventListener("targetFound", event => {
+        console.log("Target 1 found");
+        video1.play();
+      });
+      target1.addEventListener("targetLost", event => {
+        console.log("Target 1 lost");
+        video1.pause();
+      });
+
+      // Target 2
+      const target2 = document.querySelector('#target2');
+      const video2 = document.getElementById('video2');
+      target2.addEventListener("targetFound", event => {
+        console.log("Target 2 found");
+        video2.play();
+      });
+      target2.addEventListener("targetLost", event => {
+        console.log("Target 2 lost");
+        video2.pause();
+      });
+
+      // Target 3
+      const target3 = document.querySelector('#target3');
+      const video3 = document.getElementById('video3');
+      target3.addEventListener("targetFound", event => {
+        console.log("Target 3 found");
+        video3.play();
+      });
+      target3.addEventListener("targetLost", event => {
+        console.log("Target 3 lost");
+        video3.pause();
+      });
+    </script>
+  </body>
+</html>
