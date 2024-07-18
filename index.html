@@ -1,10 +1,15 @@
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-  </head>
-  <body>
+      <!-- Allow web app to be run in full-screen mode - iOS. -->
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      
+      <!-- Allow web app to be run in full-screen mode - Android. -->
+      <meta name="mobile-web-app-capable" content="yes">
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    </head>
+    <body>
     <!-- Video elements -->
     <video id="video1" loop crossOrigin="anonymous" webkit-playsinline playsinline style="display:none">
       <source src="video/HCK Graduation.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
